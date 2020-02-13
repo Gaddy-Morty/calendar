@@ -51,4 +51,43 @@ app.get('/legacy/:id', (req, res) => {
   })
 })
 
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
+// -------------------------  NEW API  ------------------------------
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
+
+// CRUD
+// Create, Read, Update, Delete
+
+// Create
+app.post('/v2/house/:id/:check_in_date/:check_out_date/:adults/:childs/:infants', (req, res) => {
+  res.send(req.params)
+})
+
+// Read
+app.get('/v2/house/:id', (req, res) => {
+  const id = req.params.id
+  db.House.findById(id, (err, data) => {
+    if (err) {
+      console.log(err)
+      res.send(400)
+      throw err
+    } else {
+      console.log('HELLO WORLD!')
+      console.log(data._doc)
+    }
+  })
+})
+
+// Update
+app.put('/v2/house/:id/:check_in_date/:check_out_date/:adults/:childs/:infants', (req, res) => {
+  res.send(req.params)
+})
+
+// Delete
+app.delete('/v2/house/:id/:check_in_date/:check_out_date/:adults/:childs/:infants', (req, res) => {
+  res.send(req.params)
+})
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
