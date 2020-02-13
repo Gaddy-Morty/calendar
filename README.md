@@ -2,7 +2,7 @@
 
 ## Create
 ### HTTP POST request to:
-/v2/house/:id/:check_in_date/:check_out_date/:adults/:childs/:infants
+/v2/house/:id/:check_in_date/:check_out_date/:adults/:childs/:infants  
 Will create a new entry with in the database for a reservation with all the relevant details 
 as in the request parameters:
 **id:** 
@@ -21,17 +21,16 @@ A string with the amount on the infants for this reservation (number)
 
 ## Read
 ### HTTP GET request to:
-/v2/house/:id
+/v2/house/:id  
 Will get the availble prices, open dates, reserved dates, max people amount (for adults, children & infants)
 
 ## Update
 ### HTTP Update request to:
-app.put('/v2/house/:id/:check_in_date/:check_out_date/:adults/:childs/:infants', (req, res) => {
-  res.send(req.params)
-})
+/v2/house/:id/:check_in_date/:check_out_date/:adults/:childs/:infants  
+Will update the a house entry with reservation including the reserved dates and people amount (for adults, children & infants)
+
 
 ## Delete
 ### HTTP Delete request to:
-app.delete('/v2/house/:id/:check_in_date/:check_out_date/:adults/:childs/:infants', (req, res) => {
-  res.send(req.params)
-})
+/v2/house/:id/:check_in_date/:check_out_date/:adults/:childs/:infants  
+Will delete a reservation entry
