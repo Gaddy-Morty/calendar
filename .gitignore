@@ -16,3 +16,6 @@ coverage/
 #Code snippits for talks
 example.js
 
+# DB config file with password
+database/mySql/config.js
+
