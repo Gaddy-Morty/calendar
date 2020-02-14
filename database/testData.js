@@ -75,7 +75,6 @@ const generateData = function (amountOfData) {
       views: getViews()
     };
     data['_id'] = i + 1
-    // data['aaaaaaaaaaaaaa'] = 123456789
     dataset.push(data)
 
   }
