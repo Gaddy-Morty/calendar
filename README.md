@@ -33,7 +33,7 @@ GET /v2/houses/:id
 Will read and retrieve a specific house listing from the database.
 #### Parameters
 * **id:** 
-A number with the id of the house in the database
+A number with the id of the house in the database.
 #### Request body
 * None
 #### Response  
