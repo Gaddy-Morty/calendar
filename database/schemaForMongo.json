@@ -19,5 +19,6 @@
   "max_infants": "number",
   "cleaning_fee": "number",
   "service_fee": "number",
-  "occupancy_taxes_fees": "number"
+  "occupancy_taxes_fees": "number",
+  "min_allowed_nights": "number"
 }
