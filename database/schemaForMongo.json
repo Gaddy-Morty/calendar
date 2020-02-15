@@ -1,0 +1,23 @@
+{
+  "id": "number",
+  "price_per_night": "number",
+  "avg_ratings": "number",
+  "reviews_amount": "number",
+  "reservations": [
+    {
+      "id": "number",
+      "total_price": "number",
+      "adults_amout": "number",
+      "childs_amout": "number",
+      "infants_amout": "number",
+      "check_in_date": "Date",
+      "check_out_date": "Date"
+    }
+  ],
+  "max_adults": "number",
+  "max_childs": "number",
+  "max_infants": "number",
+  "cleaning_fee": "number",
+  "service_fee": "number",
+  "occupancy_taxes_fees": "number"
+}
