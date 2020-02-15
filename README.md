@@ -134,36 +134,36 @@ Will get the reserved (or blacked out date by the host) dates for a specific hou
 #### Request body
 #### Response
 * The response will come as an array of reservation objects
-```json
+```
 {[
-      {
-      "id": 1,
-      "total_price": "number",
-      "adults_amout": "number",
-      "children_amout": "number",
-      "infants_amout": "number",
-      "check_in_date": "Date",
-      "check_out_date": "Date"
-    },
-    {
-      "id": 2,
-      "total_price": "number",
-      "adults_amout": "number",
-      "children_amout": "number",
-      "infants_amout": "number",
-      "check_in_date": "Date",
-      "check_out_date": "Date"
-    },
-    ...,
-    {
-      "id": 99,
-      "total_price": "number",
-      "adults_amout": "number",
-      "children_amout": "number",
-      "infants_amout": "number",
-      "check_in_date": "Date",
-      "check_out_date": "Date"
-    }
+  {
+    "id": 1,
+    "total_price": "number",
+    "adults_amout": "number",
+    "children_amout": "number",
+    "infants_amout": "number",
+    "check_in_date": "Date",
+    "check_out_date": "Date"
+  },
+  {
+    "id": 2,
+    "total_price": "number",
+    "adults_amout": "number",
+    "children_amout": "number",
+    "infants_amout": "number",
+    "check_in_date": "Date",
+    "check_out_date": "Date"
+  },
+  ...,
+  {
+    "id": 99,
+    "total_price": "number",
+    "adults_amout": "number",
+    "children_amout": "number",
+    "infants_amout": "number",
+    "check_in_date": "Date",
+    "check_out_date": "Date"
+  }
 ]}
 ```
 ---
