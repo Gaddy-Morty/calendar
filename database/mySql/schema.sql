@@ -24,6 +24,7 @@ CREATE TABLE `House` (
   `cleaning_fee` INTEGER NULL DEFAULT NULL,
   `service_fee` INTEGER NULL DEFAULT NULL,
   `occupancy_taxes_fees` INTEGER NULL DEFAULT NULL,
+  'min_allowed_nights' INTEGER NULL DEFAULT NULL,
   PRIMARY KEY (`id`, `reservations`)
 );
 
