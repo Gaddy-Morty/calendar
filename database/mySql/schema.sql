@@ -10,9 +10,9 @@
 -- 
 -- ---
 
-DROP TABLE IF EXISTS `House`;
+DROP TABLE IF EXISTS `Houses`;
 		
-CREATE TABLE `House` (
+CREATE TABLE `Houses` (
   `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
   `price_per_night` INTEGER NULL DEFAULT NULL,
   `avg_ratings` DOUBLE NULL DEFAULT NULL,
