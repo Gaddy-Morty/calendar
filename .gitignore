@@ -19,3 +19,5 @@ example.js
 # DB config file with password
 database/mySql/config.js
 
+# Ignore csv files
+*.csv
