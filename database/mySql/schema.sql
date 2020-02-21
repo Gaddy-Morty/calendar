@@ -1,69 +1,42 @@
--- ---
--- Globals
--- ---
+DROP DATABASE IF EXISTS calendar;
 
--- SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
--- SET FOREIGN_KEY_CHECKS=0;
+CREATE DATABASE calendar;
 
--- ---
--- Table 'House'
--- 
--- ---
+USE calendar;
 
-DROP TABLE IF EXISTS `Houses`;
+DROP TABLE IF EXISTS Reservations;
 		
-CREATE TABLE `Houses` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `price_per_night` INTEGER NULL DEFAULT NULL,
-  `avg_ratings` DOUBLE NULL DEFAULT NULL,
-  `reviews_amount` INTEGER NULL DEFAULT NULL,
-  `reservations` INTEGER NULL DEFAULT NULL,
-  `max_adults` INTEGER NULL DEFAULT 1,
-  `max_childs` INTEGER NULL DEFAULT 0,
-  `max_infants` INTEGER NULL DEFAULT 0,
-  `cleaning_fee` INTEGER NULL DEFAULT NULL,
-  `service_fee` INTEGER NULL DEFAULT NULL,
-  `occupancy_taxes_fees` INTEGER NULL DEFAULT NULL,
-  'min_allowed_nights' INTEGER NULL DEFAULT NULL,
-  PRIMARY KEY (`id`, `reservations`)
+CREATE TABLE Reservations (
+  id INT NOT NULL AUTO_INCREMENT,
+  final_price_per_night INT NULL,
+  adults_amout INT NULL,
+  childs_amout INT NULL,
+  infants_amout INT NULL,
+  check_in_date DATE NULL,
+  check_out_date DATE NULL,
+  house_id INT NULL,
+  PRIMARY KEY (id)
 );
 
--- ---
--- Table 'Reservations'
--- 
--- ---
-
-DROP TABLE IF EXISTS `Reservations`;
+DROP TABLE IF EXISTS Houses;
 		
-CREATE TABLE `Reservations` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `final_price_per_night` INTEGER NULL DEFAULT NULL,
-  `adults_amout` INTEGER NULL DEFAULT NULL,
-  `childs_amout` INTEGER NULL DEFAULT NULL,
-  `infants_amout` INTEGER NULL DEFAULT NULL,
-  `check_in_date` DATE NULL DEFAULT NULL,
-  `check_out_date` DATE NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE Houses (
+  id INT NOT NULL AUTO_INCREMENT,
+  price_per_night INT,
+  avg_ratings FLOAT,
+  reviews_amount INT,
+  max_adults INT NULL DEFAULT 1,
+  max_childs INT NULL DEFAULT 0,
+  max_infants INT NULL DEFAULT 0,
+  cleaning_fee INT NULL,
+  service_fee INT NULL,
+  occupancy_taxes_fees INT NULL,
+  min_allowed_nights INT NULL,
+  PRIMARY KEY (id)
 );
 
--- ---
--- Foreign Keys 
--- ---
+-- FOREIGN KEY (index_col_name)
+--         REFERENCES table_name (index_col_name,...)
 
-ALTER TABLE `Reservations` ADD FOREIGN KEY (id) REFERENCES `House` (`reservations`);
-
--- ---
--- Table Properties
--- ---
-
--- ALTER TABLE `House` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `Reservations` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- ---
--- Test Data
--- ---
-
--- INSERT INTO `House` (`id`,`price_per_night`,`avg_ratings`,`reviews_amount`,`reservations`,`max_adults`,`max_childs`,`max_infants`,`cleaning_fee`,`service_fee`,`occupancy_taxes_fees`) VALUES
--- ('','','','','','','','','','','');
--- INSERT INTO `Reservations` (`id`,`final_price_per_night`,`adults_amout`,`childs_amout`,`infants_amout`,`check_in_date`,`check_out_date`) VALUES
--- ('','','','','','','');
+-- ALTER TABLE Houses ADD FOREIGN KEY (reservations) REFERENCES Reservations (id);
+-- ALTER TABLE Reservations ADD FOREIGN KEY (house_id) REFERENCES Houses (id);
