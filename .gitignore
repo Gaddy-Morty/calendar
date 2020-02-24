@@ -19,5 +19,10 @@ example.js
 # DB config file with password
 database/mySql/config.js
 
-# Ignore csv files
+# Ignore all csv files
 *.csv
+
+# Ignore these json files
+database/mongoDB/Houses.json
+database/mongoDB/houseListings.json
+database/mongoDB/testBrackets.json
