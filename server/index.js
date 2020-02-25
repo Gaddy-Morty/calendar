@@ -79,8 +79,9 @@ app.put('/v2/houses/:id/reservations/:reservationId/:check_in_date/:check_out_da
 })
 
 // Delete
-app.delete('/v2/house/:id/:check_in_date/:check_out_date/:adults/:childs/:infants', (req, res) => {
-  res.send(req.params)
+app.delete('/v2/houses/:id/reservations/:reservationId', (req, res) => {
+  // res.send(req.params)
+  db.deleteReservation(req.params, (data) => { res.send(data); });
 })
 
 app.listen(port, () => console.log(`House listing reservations server is listening on port ${port}!`));

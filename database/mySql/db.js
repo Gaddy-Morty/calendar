@@ -49,5 +49,18 @@ module.exports.updateReservation = function (reservationDetails, cb) {
     });
 };
 
-// DELETE
-// DELETE FROM Reservations WHERE id = 100000001;
+// DELETE A SPECIFIC RESERVATION
+module.exports.deleteReservation = function (reservationDetails, cb) {
+  db.query(
+    `DELETE FROM Reservations WHERE id = ${reservationDetails.reservationId};`,
+
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+        cb(error);
+      } else {
+        cb(results);
+        console.log(`Deleted reservation ${reservationDetails.reservationId}`)
+      }
+    });
+};
