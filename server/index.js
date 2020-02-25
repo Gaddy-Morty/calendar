@@ -74,13 +74,11 @@ app.get('/v2/house/:id/reservations', (req, res) => {
 
 // Update
 app.put('/v2/houses/:id/reservations/:reservationId/:check_in_date/:check_out_date/:adults/:children/:infants', (req, res) => {
-  // res.send(req.params)
   db.updateReservation(req.params, (data) => { res.send(data); });
 })
 
 // Delete
 app.delete('/v2/houses/:id/reservations/:reservationId', (req, res) => {
-  // res.send(req.params)
   db.deleteReservation(req.params, (data) => { res.send(data); });
 })
 
