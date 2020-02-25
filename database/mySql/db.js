@@ -33,3 +33,21 @@ module.exports.readAllReservationsFromHouse = function (id, cb) {
       }
     });
 };
+// UPDATE A SPECIFIC RESERVATION
+module.exports.updateReservation = function (reservationDetails, cb) {
+  db.query(
+    `UPDATE Reservations SET check_in_date = "${reservationDetails.check_in_date}", check_out_date = "${reservationDetails.check_out_date}", adults_amout = ${reservationDetails.adults}, childs_amout = ${reservationDetails.children}, infants_amout = ${reservationDetails.infants} WHERE id = ${reservationDetails.reservationId};`,
+
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+        cb(error);
+      } else {
+        cb(results);
+        console.log(`Updated reservation ${reservationDetails.reservationId}`)
+      }
+    });
+};
+
+// DELETE
+// DELETE FROM Reservations WHERE id = 100000001;
