@@ -62,15 +62,15 @@ app.get('/legacy/:id', (req, res) => {
 // Create, Read, Update, Delete
 
 // Create
-app.post('/v2/house/:id/:check_in_date/:check_out_date/:adults/:childs/:infants', (req, res) => {
-  res.send(req.params)
-})
+app.post('/v2/houses/:id/reservations/:check_in_date/:check_out_date/:adults/:children/:infants', (req, res) => {
+  db.createANewReservationForHouse(req.params, (data) => { res.send(data) });
+});
 
 // Read
 app.get('/v2/house/:id/reservations', (req, res) => {
   const id = req.params.id;
   db.readAllReservationsFromHouse(id, (data) => { res.send(data) });
-})
+});
 
 // Update
 app.put('/v2/house/:id/:check_in_date/:check_out_date/:adults/:childs/:infants', (req, res) => {
