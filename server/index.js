@@ -2,13 +2,14 @@ const express = require('express')
 const app = express()
 const port = 2000
 const path = require('path')
-const seedingScript = require('../database/seedingScript.js')
+// const seedingScript = require('../database/seedingScript.js')
 
 var cors = require('cors')
 
 app.use(cors())
 
-const db = require('../database/index.js')
+// const db = require('../database/index.js')
+const db = require('../database/mySql/db.js')
 
 app.use(express.static(path.join(__dirname, '../client/dist/')))
 
@@ -61,33 +62,24 @@ app.get('/legacy/:id', (req, res) => {
 // Create, Read, Update, Delete
 
 // Create
-app.post('/v2/house/:id/:check_in_date/:check_out_date/:adults/:childs/:infants', (req, res) => {
-  res.send(req.params)
-})
+app.post('/v2/houses/:id/reservations/:check_in_date/:check_out_date/:adults/:children/:infants', (req, res) => {
+  db.createANewReservationForHouse(req.params, (data) => { res.send(data) });
+});
 
 // Read
-app.get('/v2/house/:id', (req, res) => {
-  const id = req.params.id
-  db.House.findById(id, (err, data) => {
-    if (err) {
-      console.log(err)
-      res.send(400)
-      throw err
-    } else {
-      console.log('HELLO WORLD!')
-      console.log(data._doc)
-    }
-  })
-})
+app.get('/v2/house/:id/reservations', (req, res) => {
+  const id = req.params.id;
+  db.readAllReservationsFromHouse(id, (data) => { res.send(data) });
+});
 
 // Update
-app.put('/v2/house/:id/:check_in_date/:check_out_date/:adults/:childs/:infants', (req, res) => {
-  res.send(req.params)
+app.put('/v2/houses/:id/reservations/:reservationId/:check_in_date/:check_out_date/:adults/:children/:infants', (req, res) => {
+  db.updateReservation(req.params, (data) => { res.send(data); });
 })
 
 // Delete
-app.delete('/v2/house/:id/:check_in_date/:check_out_date/:adults/:childs/:infants', (req, res) => {
-  res.send(req.params)
+app.delete('/v2/houses/:id/reservations/:reservationId', (req, res) => {
+  db.deleteReservation(req.params, (data) => { res.send(data); });
 })
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`House listing reservations server is listening on port ${port}!`));
