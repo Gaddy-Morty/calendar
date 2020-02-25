@@ -2,22 +2,21 @@ const mysql = require('mysql');
 const mysqlConfig = require('./config.js');
 
 const db = mysql.createConnection(mysqlConfig);
+db.connect();
 
-module.exports.readId = function (id, cb) {
-  result = {};
-  db.query(`SELECT * FROM images where accommodationId=${id};`, (err, data) => {
-    if (err) {
-      cb(err);
-    } else {
-      result.imgArr = data;
-      db.query(`SELECT name FROM accommodations where id=${id};`, (err, data) => {
-        if (err) {
-          cb(err);
-        } else {
-          result.name = data[0].name;
-          cb(null, result);
-        }
-      });
-    }
-  });
+module.exports.readAllReservationsFromHouse = function (id, cb) {
+  // let result = {};
+
+  db.query(
+    `SELECT * from Reservations WHERE house_id = ${id};`,
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+        cb(error);
+      } else {
+        cb(results);
+        console.log(`Queried all reservations for house id: ${id}`)
+      }
+    });
+
 };

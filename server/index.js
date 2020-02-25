@@ -2,13 +2,14 @@ const express = require('express')
 const app = express()
 const port = 2000
 const path = require('path')
-const seedingScript = require('../database/seedingScript.js')
+// const seedingScript = require('../database/seedingScript.js')
 
 var cors = require('cors')
 
 app.use(cors())
 
-const db = require('../database/index.js')
+// const db = require('../database/index.js')
+const db = require('../database/mySql/db.js')
 
 app.use(express.static(path.join(__dirname, '../client/dist/')))
 
@@ -67,17 +68,8 @@ app.post('/v2/house/:id/:check_in_date/:check_out_date/:adults/:childs/:infants'
 
 // Read
 app.get('/v2/house/:id', (req, res) => {
-  const id = req.params.id
-  db.House.findById(id, (err, data) => {
-    if (err) {
-      console.log(err)
-      res.send(400)
-      throw err
-    } else {
-      console.log('HELLO WORLD!')
-      console.log(data._doc)
-    }
-  })
+  const id = req.params.id;
+  db.readAllReservationsFromHouse(id, (data) => { res.send(data) });
 })
 
 // Update
@@ -90,4 +82,4 @@ app.delete('/v2/house/:id/:check_in_date/:check_out_date/:adults/:childs/:infant
   res.send(req.params)
 })
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`House listing reservations server is listening on port ${port}!`));
