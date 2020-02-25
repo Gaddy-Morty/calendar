@@ -67,7 +67,7 @@ app.post('/v2/house/:id/:check_in_date/:check_out_date/:adults/:childs/:infants'
 })
 
 // Read
-app.get('/v2/house/:id', (req, res) => {
+app.get('/v2/house/:id/reservations', (req, res) => {
   const id = req.params.id;
   db.readAllReservationsFromHouse(id, (data) => { res.send(data) });
 })
