@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const mysqlConfig = require('./config.js');
 
 const db = mysql.createConnection(mysqlConfig);
@@ -31,7 +31,7 @@ module.exports = {
           cb(error);
         } else {
           cb(results);
-          console.log(`Queried all reservations for house id: ${id}`)
+          // console.log(`Queried all reservations for house id: ${id}`)
         }
       });
   },

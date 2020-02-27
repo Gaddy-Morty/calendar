@@ -1,3 +1,4 @@
+const newRelic = require('newrelic');
 const express = require('express')
 const app = express()
 const port = 2000
@@ -58,7 +59,7 @@ app.get('/legacy/:id', (req, res) => {
 // ------------------------------------------------------------------
 // ------------------------------------------------------------------
 
-// CRUD
+// CRUD for reservations
 // Create, Read, Update, Delete
 
 // Create
