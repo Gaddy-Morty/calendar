@@ -1,2 +1,6 @@
 node_modules
 npm-debug.log
+database/mongoDB/schemaForMongo.json
+database/mySql/houses.csv
+database/mySql/reservations.csv
+package-lock.json

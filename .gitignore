@@ -26,3 +26,9 @@ database/mySql/config.js
 database/mongoDB/Houses.json
 database/mongoDB/houseListings.json
 database/mongoDB/testBrackets.json
+
+# Ignore newrelic.js
+newrelic.js
+
+# Ignore new relic log file
+newrelic_agent.log
